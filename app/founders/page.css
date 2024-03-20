@@ -1,3 +1,4 @@
-.contact__card {
-    flex-direction: column-reverse !important;
+.contact__cards-wrapper > .contact__card {
+    flex-direction: column-reverse;
+    align-items: flex-start;
 }
