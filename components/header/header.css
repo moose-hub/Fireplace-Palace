@@ -1,26 +1,114 @@
 header {
-  display: flex;
-  max-height: var(--header-height);
-  flex-direction: row;
+  display: grid;
+  grid: 1fr / 1fr 5fr;
+  height: var(--header-height);
+  align-items: center;
+}
+
+.header__header-expansion::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+}
+
+.header__navButton {
+  cursor: pointer;
+  border: none;
+  z-index: 1;
+  box-shadow: 0px 0px 50px 1px rgba(30, 30, 30, 0.2);
+  background-color: rgba(250, 248, 250, 0.1);
+  height: 2.3rem;
+  width: 2.3rem;
+  line-height: 1rem;
+  border-radius: 4px;
+  /* margin: .2rem; */
+  font-size: 1.5rem;
+  transition: transform .175s ease-in-out;
+}
+
+.header__navButton:hover {
+  color: var(--accent-color)
+}
+
+.header__text {
+  font-size: 1.4rem;
+  grid-column: 2;
+}
+
+.header__navButton-close {
+  z-index: 101;
+  transform: translateX(calc(70vw - 80px)) rotateZ(90deg);
+  position: fixed;
+}
+
+.header__navButton-close:hover {
+  color: rgb(200, 20, 20);
+
 }
 
 .nav__wrapper {
-  transition: left .125s ease-in-out;
+  transition: left .175s ease-in-out;
   position: fixed;
   left: -100%;
   top: 0;
+  z-index: 100;
   width: 70vw;
   height: 100vh;
   background-color: var(--accent-color);
-  z-index: 100;
   box-shadow: 1px 1px 30vw 1px rgb(10, 10, 10);
+  display: flex;
+  align-content: space-around;
+  flex-direction: column;
 }
 
 .nav__wrapper>li {
   padding: 4rem 2rem 4rem 2rem;
-  font-size: 2.3rem;
+  font-size: 2rem;
+  list-style: none;
 }
 
 .nav__link {
   text-decoration: none;
+}
+
+@media screen and (orientation: landscape) {
+
+  header {
+    grid: 1fr / 2fr 4fr;
+  }
+
+  nav {
+    grid-column: 2;
+  }
+
+  .header__text {
+    grid-column: 1;
+  }
+
+  .nav__wrapper {
+    height: 100%;
+    padding: 0;
+    position: initial;
+    background-color: initial;
+    box-shadow: initial;
+    width: initial;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .nav__wrapper>li {
+    text-align: right;
+    padding: .1rem 0;
+    font-size: 1.3rem;
+    flex: 1
+  }
+
+  .header__navButton {
+    display: none;
+  }
+
 }
