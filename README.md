@@ -35,14 +35,23 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 ## Plan
 
- - Move the components and assets folders over
-   - Make a sub folder for the assets per page
- - Move the main App component over the root page
-   - Extract the layout
- - Move the main/global CSS
- - Rectify the paths
- - Switch img/picture tags for Next.js Image component
- - Do the Founders page
+- Move the components and assets folders over
+  - Make a sub folder for the assets per page
+- Move the main App component over the root page
+  - Extract the layout
+- Move the main/global CSS
+- Rectify the paths
+- Switch img/picture tags for Next.js Image component
+- Do the Founders page
+- make a new directory
+- include page and css
+- include import adn export statements
+- make the page
+  - can we reuse any previous components?
+  - page can reuse the same header and footer as in the layout.
+  - hero image and desc to be updated
+  - cards have the same title, image adn desc but image and desc need reordering
+- Complete the nav
+- put this in the header
