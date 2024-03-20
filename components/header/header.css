@@ -1,3 +1,26 @@
 header {
+  display: flex;
   max-height: var(--header-height);
+  flex-direction: row;
+}
+
+.nav__wrapper {
+  transition: left .125s ease-in-out;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  width: 70vw;
+  height: 100vh;
+  background-color: var(--accent-color);
+  z-index: 100;
+  box-shadow: 1px 1px 30vw 1px rgb(10, 10, 10);
+}
+
+.nav__wrapper>li {
+  padding: 4rem 2rem 4rem 2rem;
+  font-size: 2.3rem;
+}
+
+.nav__link {
+  text-decoration: none;
 }
