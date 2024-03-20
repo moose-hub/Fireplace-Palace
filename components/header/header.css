@@ -1,44 +1,60 @@
 header {
-  display: flex;
+  display: grid;
+  grid: 1fr / 1fr 5fr;
   height: var(--header-height);
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-
-  /* background-color: grey; */
 }
 
-.header__text {
-  padding: 0 1.3rem 0;
-  font-size: 1.4rem;
+.header__header-expansion::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
 }
 
-.nav__button {
+.header__navButton {
+  cursor: pointer;
   border: none;
   z-index: 1;
   box-shadow: 0px 0px 50px 1px rgba(30, 30, 30, 0.2);
   background-color: rgba(250, 248, 250, 0.1);
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 2.3rem;
+  width: 2.3rem;
   line-height: 1rem;
   border-radius: 4px;
-  margin: .2rem;
+  /* margin: .2rem; */
   font-size: 1.5rem;
-  transition: transform .125s ease-in-out;
+  transition: transform .175s ease-in-out;
 }
 
-.nav__button-close {
+.header__navButton:hover {
+  color: var(--accent-color)
+}
+
+.header__text {
+  font-size: 1.4rem;
+  grid-column: 2;
+}
+
+.header__navButton-close {
   z-index: 101;
-  transform: rotateZ(90deg);
-  position: fixed
+  transform: translateX(calc(70vw - 80px)) rotateZ(90deg);
+  position: fixed;
+}
+
+.header__navButton-close:hover {
+  color: rgb(200, 20, 20);
+
 }
 
 .nav__wrapper {
-  transition: left .125s ease-in-out;
+  transition: left .175s ease-in-out;
   position: fixed;
   left: -100%;
   top: 0;
-  padding: 2rem 1rem;
   z-index: 100;
   width: 70vw;
   height: 100vh;
@@ -62,11 +78,15 @@ header {
 @media screen and (orientation: landscape) {
 
   header {
-    justify-content: space-between;
+    grid: 1fr / 2fr 4fr;
   }
 
   nav {
-    width: 50%;
+    grid-column: 2;
+  }
+
+  .header__text {
+    grid-column: 1;
   }
 
   .nav__wrapper {
@@ -87,7 +107,7 @@ header {
     flex: 1
   }
 
-  .nav__button {
+  .header__navButton {
     display: none;
   }
 

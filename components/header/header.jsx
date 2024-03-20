@@ -13,10 +13,10 @@ function Header({ text }) {
   }
 
   return (
-    <header className="">
+    <header onClick={(e) => navShown && e.target.className === "header__header-expansion" ? toggleNav() : false
+    } className={navShown ? "header__header-expansion" : false} >
       <button
-        className={navShown ? "nav__button .nav__button-close" : "nav__button"}
-        style={navShown ? { zIndex: 101, transform: "rotateZ(90deg)", position: "fixed" } : { zIndex: 1 }}
+        className={navShown ? "header__navButton-close header__navButton" : "header__navButton"}
         onClick={toggleNav}> {
           navShown ?
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ function Header({ text }) {
       </button>
       <span className="header__text">{text}</span>
       <nav>
-        <ul onClick={() => navShown ? toggleNav() : false} className="nav__wrapper" style={navShown ? { left: 0 } : { left: "-100%" }} >
+        <ul onClick={(e) => navShown && e.target.className === "nav__link" ? toggleNav() : false} className="nav__wrapper" style={navShown ? { left: 0 } : { left: "-100%" }} >
           <li>
             <Link className="nav__link" href="/">Home</Link>
           </li>
