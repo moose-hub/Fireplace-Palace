@@ -1,3 +1,4 @@
+import "./page.css";
 import {FounderBanner} from "../../components/founderBanner/FounderBanner";
 import {CardSection} from "../../components/cardSection/CardSection";
 import Main from "../../components/main/main";

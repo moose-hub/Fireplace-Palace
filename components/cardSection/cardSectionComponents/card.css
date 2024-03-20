@@ -2,32 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  gap: 1rem;
   margin: 0.5rem 0 0.5rem 0;
+  padding: .5rem;
 }
 
 .contact__card-title {
   display: block;
   font-size: 1.3em;
   font-weight: 600;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 20px;
-  align-items: center;
 }
 
 .contact__card-img {
-  width: 95%;
+  width: 100%;
   height: 100%;
 }
 
 @media screen and (orientation: landscape) {
-
   .contact__card-img {
-    width: 90%;
     height: auto;
   }
 
   .contact__card {
-    max-width: 33%;
+    max-width: 33.333333%;
   }
 }
