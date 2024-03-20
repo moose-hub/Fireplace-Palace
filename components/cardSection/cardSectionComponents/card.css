@@ -1,0 +1,22 @@
+.contact__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.contact__card-title {
+  display: block;
+  font-size: 1.3em;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.contact__card-img {
+  object-fit: cover;
+  max-width: 80%;
+  padding: 5px;
+}
