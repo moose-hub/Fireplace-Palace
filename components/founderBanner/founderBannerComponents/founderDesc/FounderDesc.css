@@ -1,0 +1,15 @@
+.founder__banner-desc {
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.banner__desc-info {
+  margin: 2rem 0;
+  font-size: 1.3rem;
+}
+
+@media screen and (orientation: landscape) {
+  .founder__banner-desc {
+    max-width: 50%;
+  }
+}

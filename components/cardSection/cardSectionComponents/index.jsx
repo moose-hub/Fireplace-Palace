@@ -10,8 +10,10 @@ export function Card({ image, title, desc }) {
                 alt="How it works 3"
                 className="contact__card-img"
             />
-            <span className="contact__card-title">{title}</span>
-            <p className="contact__card-desc">{desc}</p>
+            <div className="contact__card-info">
+                <span className="contact__card-title">{title}</span>
+                <p className="contact__card-desc">{desc}</p>
+            </div>
         </article>
     )
 }

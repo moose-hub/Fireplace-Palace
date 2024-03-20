@@ -1,0 +1,3 @@
+.contact__card {
+    flex-direction: column-reverse !important;
+}

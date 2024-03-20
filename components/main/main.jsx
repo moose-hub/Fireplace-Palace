@@ -1,12 +1,9 @@
 import './main.css';
-import { HeroBanner } from '../heroBanner/homeHeroBanner.jsx';
-import { CardSection } from '../cardSection/CardSection.jsx';
 
-function Main() {
+function Main({children}) {
   return (
     <main>
-      <HeroBanner />
-      <CardSection title="How it works" />
+      {children}
     </main>
   );
 }
