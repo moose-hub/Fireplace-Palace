@@ -2,7 +2,9 @@
 
 :root {
   --color-light: #fcfcfc;
+  --color-light-darker: 200, 200, 200;
   --color-dark: #212427;
+  --color-dark-lighter: 150, 150, 150;
   --accent-color: #f0911b;
 
   --header-height: 90px;
