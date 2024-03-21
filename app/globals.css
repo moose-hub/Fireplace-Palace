@@ -31,6 +31,7 @@ main,
   max-width: 1024px;
 }
 
-a:visited, a:active {
+a:visited,
+a:active {
   color: var(--color-dark);
 }

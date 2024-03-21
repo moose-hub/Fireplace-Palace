@@ -41,7 +41,7 @@ function Header({ text }) {
           </ul>
         </nav>
         <nav className={navShown ? "nav__wrapper-mobile nav__drawer-open" : "nav__wrapper-mobile"} aria-label="Mobile navigation"
-        onClick={() => (navShown ? toggleNav() : false)}
+          onClick={() => (navShown ? toggleNav() : false)}
         >
           <button
             className={navShown ? "nav__button-mobile" : "nav__hide nav__button-mobile"}
@@ -63,10 +63,10 @@ function Header({ text }) {
           </ul>
         </nav>
         <button
-            className={navShown ? "nav__hide nav__button-mobile" : "nav__button-mobile"}
-            onClick={toggleNav}
-          >
-            <span className={navShown ? "line-md--menu-to-close-transition" : "line-md--close-to-menu-transition"}></span>
+          className={navShown ? "nav__hide nav__button-mobile" : "nav__button-mobile"}
+          onClick={toggleNav}
+        >
+          <span className={navShown ? "line-md--menu-to-close-transition" : "line-md--close-to-menu-transition"}></span>
         </button>
       </div>
     </header>

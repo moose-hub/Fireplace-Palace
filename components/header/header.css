@@ -5,9 +5,6 @@ header {
   justify-content: space-between;
 }
 
-.header__logo {
-}
-
 .nav__wrapper {
   display: flex;
   align-items: center;
@@ -59,13 +56,14 @@ header {
   z-index: 100;
 }
 
-.nav__list-mobile > li {
+.nav__list-mobile>li {
   text-decoration: none;
   list-style: none;
   font-size: 2.3rem;
 }
 
 .nav__link {
+  color: rgb(30, 30, 30);
   text-decoration: none;
 }
 

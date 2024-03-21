@@ -1,16 +1,16 @@
 .hero__banner-desc {
-    background-color: var(--accent-color);
-    padding: 1rem;
-    line-height: 3rem;
-    margin: auto 0;
-  }
-  
-  .hero__banner-desc span {
-    color: var(--color-light);
-    font-size: 1.3rem;
-    margin-left: 1rem;
-  }
-  
-  .banner__desc-info {
-    font-size: 1.3rem;
-  }
+  background-color: var(--accent-color);
+  padding: 1rem;
+  line-height: 3rem;
+  margin: auto 0;
+}
+
+.hero__banner-desc span {
+  color: var(--color-light);
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.banner__desc-info {
+  font-size: 1.3rem;
+}
