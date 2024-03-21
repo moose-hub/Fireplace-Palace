@@ -17,7 +17,14 @@ function Reviews() {
   }, [currentCountry]);
 
   const handleClick = (ev) => {
-    setCurrentCountry(ev.target.textContent.toLowerCase())
+    setCurrentCountry(ev.target.textContent.toLowerCase());
+    const button = ev.target.parentElement.querySelector(".active");
+    button?.classList.remove("active")
+    ev.target.classList.add("active");
+    // for (const button in buttons) {
+    //   button.classList.remove("active")
+    // }
+    // console.log(buttons)
   }
 
   return (
