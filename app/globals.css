@@ -5,7 +5,7 @@
   --color-dark: #212427;
   --accent-color: #f0911b;
 
-  --header-height: 70px;
+  --header-height: 90px;
   --footer-height: 160px;
 }
 
@@ -29,4 +29,9 @@ main,
   margin: 0 auto;
   padding: 15px;
   max-width: 1024px;
+}
+
+a:visited,
+a:active {
+  color: var(--color-dark);
 }
