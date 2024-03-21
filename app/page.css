@@ -21,7 +21,6 @@
   }
 
   .hero__banner-desc {
-    margin: 3rem 0 0 5rem;
     align-self: flex-start;
   }
 
@@ -30,8 +29,12 @@
   }
 
   .contact__card {
-    max-width: 33%;
+    max-width: 33.3333%;
     text-align: center;
     padding: 1rem;
+  }
+
+  .nav_wrapper-primary {
+    display: block;
   }
 }

@@ -2,6 +2,7 @@
     background-color: var(--accent-color);
     padding: 1rem;
     line-height: 3rem;
+    margin: auto 0;
   }
   
   .hero__banner-desc span {
