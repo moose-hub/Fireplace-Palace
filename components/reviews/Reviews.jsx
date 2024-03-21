@@ -3,7 +3,7 @@
 import "./Reviews.css"
 import { useState, useEffect } from "react";
 
-function Reviews() {
+function content__toggler() {
 
   const [currentCountry, setCurrentCountry] = useState(null);
   const [review, setReview] = useState({});
@@ -21,23 +21,24 @@ function Reviews() {
   }
 
   return (
-    <>
-      <h2 className="reviews__title">Trusted.</h2>
-      <p className="reviews__desc">We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
-      <div onClick={handleClick} className="reviews__buttons">
-        <button className="reviews__button button-england">England</button>
-        <button className="reviews__button button-wales">Wales</button>
-        <button className="reviews__button button-scotland">Scotland</button>
+      <div className="content__toggler-wrapper">
+        <h1 className="content__toggler-title">Trusted.</h1>
+        <p className="content__toggler-desc">We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
+        <div className="content__toggler-buttons">
+          <button onClick={handleClick} className={currentCountry === "england" ? "content__toggler-button button-england active" : "content__toggler-button button-england"}>England</button>
+          <button onClick={handleClick} className={currentCountry === "wales" ? "content__toggler-button button-wales active" : "content__toggler-button button-wales"}>Wales</button>
+          <button onClick={handleClick} className={currentCountry === "scotland" ? "content__toggler-button button-scotland active" : "content__toggler-button button-scotland"}>Scotland</button>
+        </div>
+        <div className={!currentCountry ? "hide__review" : "review__wrapper"}>
+          <p className="review__text">
+            {review.text}
+          </p>
+          <div className="review__author">
+            {review.author} - <span className="review__author-location">{review.location}</span>
+          </div>
+        </div>
       </div>
-
-      <p className="reviews__text">
-        {review.text}
-      </p>
-      <div className="reviews__author">
-        {review.author} - <span className="reviews__author-location">{review.location}</span>
-      </div>
-    </>
   );
 }
 
-export default Reviews;
+export default content__toggler;
