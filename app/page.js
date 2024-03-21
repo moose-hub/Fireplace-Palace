@@ -3,6 +3,7 @@ import "./page.css";
 
 import { HeroBanner } from '../components/heroBanner/homeHeroBanner';
 import { CardSection } from '../components/cardSection/CardSection';
+import Reviews from '../components/reviews/Reviews';
 
 import HIW1 from '../assets/how-it-works-1.png';
 import HIW2 from '../assets/how-it-works-2.png';
@@ -29,6 +30,7 @@ export default function Home() {
   return (
     <Main>
       <HeroBanner />
+      <Reviews />
       <CardSection title="How it works" cardData={cardData}/>
     </Main>
   )
