@@ -3,3 +3,9 @@
   flex-direction: column;
   text-align: center;
 }
+
+@media screen and (orientation: landscape) {
+  .hero__banner {
+    flex-direction: row;
+  }
+}

@@ -53,26 +53,33 @@ header {
 .nav__wrapper {
   transition: left .175s ease-in-out;
   position: fixed;
+  padding-top: 4rem;
+  text-align: right;
   left: -100%;
   top: 0;
   z-index: 100;
   width: 70vw;
   height: 100vh;
   background-color: var(--accent-color);
-  box-shadow: 1px 1px 30vw 1px rgb(10, 10, 10);
+  box-shadow: 0px 0px 30vw 5px rgb(10, 10, 10);
   display: flex;
-  align-content: space-around;
+  /* align-content: space-around; */
   flex-direction: column;
 }
 
 .nav__wrapper>li {
-  padding: 4rem 2rem 4rem 2rem;
-  font-size: 2rem;
+  padding: 2rem;
+  font-size: 5vw;
   list-style: none;
 }
 
 .nav__link {
+  color: rgb(30, 30, 30);
   text-decoration: none;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
 }
 
 @media screen and (orientation: landscape) {

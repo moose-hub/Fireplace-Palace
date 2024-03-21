@@ -43,7 +43,7 @@ function Header({ text }) {
             <Link className="nav__link" href="/">Home</Link>
           </li>
           <li>
-            <Link className="nav__link" href="/founders">Founders</Link>
+            <Link className="nav__link" href="/founders">Meet the Founders</Link>
           </li>
         </ul>
       </nav>
