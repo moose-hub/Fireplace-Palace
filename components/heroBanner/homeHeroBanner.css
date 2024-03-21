@@ -4,8 +4,8 @@
   max-height: 100%;
 }
 
-@media (orientation: portrait) {
+@media (orientation: landscape) {
   .hero__banner {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
