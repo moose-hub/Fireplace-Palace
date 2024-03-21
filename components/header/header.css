@@ -5,6 +5,16 @@ header {
   justify-content: space-between;
 }
 
+.header__nav-open::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
 .nav__wrapper {
   display: flex;
   align-items: center;
@@ -45,6 +55,7 @@ header {
 
 .nav__drawer-open {
   right: 0;
+  z-index: 100;
 }
 
 .nav__list-mobile {
@@ -52,8 +63,6 @@ header {
   flex-direction: column;
   align-items: flex-end;
   gap: 1rem;
-
-  z-index: 100;
 }
 
 .nav__list-mobile>li {

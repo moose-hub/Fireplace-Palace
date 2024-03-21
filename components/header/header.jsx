@@ -16,7 +16,9 @@ function Header({ text }) {
   };
 
   return (
-    <header>
+    <header
+      className={navShown ? "header__nav-open" : false}
+      onClick={(e) => (navShown && e.target.className === "header__nav-open" ? toggleNav() : false)}>
       <Image
         src={Logo}
         placeholder="empty"
@@ -35,14 +37,12 @@ function Header({ text }) {
             </li>
             <li className="nav__link-primary">
               <Link className="nav__link" href="/founders">
-                Founders
+                Meet the Founders
               </Link>
             </li>
           </ul>
         </nav>
-        <nav className={navShown ? "nav__wrapper-mobile nav__drawer-open" : "nav__wrapper-mobile"} aria-label="Mobile navigation"
-          onClick={() => (navShown ? toggleNav() : false)}
-        >
+        <nav className={navShown ? "nav__wrapper-mobile nav__drawer-open" : "nav__wrapper-mobile"} aria-label="Mobile navigation">
           <button
             className={navShown ? "nav__button-mobile" : "nav__hide nav__button-mobile"}
             onClick={toggleNav}
@@ -57,7 +57,7 @@ function Header({ text }) {
             </li>
             <li>
               <Link className="nav__link" href="/founders">
-                Founders
+                Meet the Founders
               </Link>
             </li>
           </ul>
