@@ -55,3 +55,39 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
   - cards have the same title, image adn desc but image and desc need reordering
 - Complete the nav
 - put this in the header
+
+## Plan for Hackathon
+
+- Basic component to add in the reviews
+
+  - new component with .jsx and .css
+  - call that component from the home page
+  - include import and exports
+  - buttons component will be:
+    - three buttons
+    - one per country (england, wales, scotland)
+    - title(trusted)
+    - desc(click this to see reviews)
+  - review component:
+    - review text
+    - review author
+
+- add state
+
+  - useState hook for country
+  - initialise it as nothing
+    - once each is clicked, remove the state from the others with a function
+  - useState hook for review
+  - initialise it as nothing
+  - remember the review once button is clicked
+
+- add effect
+
+  - useEffect hook
+  - fetch data from Loz's API
+    - investigate that API to see it's docs (general)
+    - add query paramter with each country
+  - have useEffect depend on the country state
+
+- review progress and assess stretch goals
+  - make new plan for each stretch goal identified
