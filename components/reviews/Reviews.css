@@ -29,9 +29,9 @@
     border-radius: 3px;
     padding: 1rem 2.5rem;
     max-width: 150px;
-    
+
     transition: background-color .125s ease-in-out, color .125s ease-in-out;
-    
+
 }
 
 .content__toggler-button:hover {
@@ -39,7 +39,7 @@
     color: var(--color-dark);
 }
 
-.hide__review {
+.hide {
     display: none;
 }
 
@@ -48,12 +48,14 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+    width: 95%;
 }
 
 .review__text {
     background-color: rgb(var(--color-light-darker));
     padding: 2rem;
     border-radius: 1rem;
+    height: 100px;
 }
 
 .review__author {
