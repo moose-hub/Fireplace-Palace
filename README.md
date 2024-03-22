@@ -59,18 +59,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Plan for Hackathon
 
 - Basic component to add in the reviews
-
-  - new component with .jsx and .css
-  - call that component from the home page
-  - include import and exports
-  - buttons component will be:
-    - three buttons
-    - one per country (england, wales, scotland)
-    - title(trusted)
-    - desc(click this to see reviews)
-  - review component:
-    - review text
-    - review author
+- new component with .jsx and .css
+- call that component from the home page
+- include import and exports
+- buttons component will be:
+  - three buttons
+  - one per country (england, wales, scotland)
+  - title(trusted)
+  - desc(click this to see reviews)
+- review component:
+  - review text
+  - review author
 
 - add state
 

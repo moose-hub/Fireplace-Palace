@@ -39,6 +39,11 @@ function Header() {
                 Meet the Founders
               </Link>
             </li>
+            <li className="nav__link-primary">
+              <Link className="nav__link" href="/plan">
+                Plan
+              </Link>
+            </li>
           </ul>
         </nav>
         <nav className={navShown ? "nav__wrapper-mobile nav__drawer-open" : "nav__wrapper-mobile"} aria-label="Mobile navigation">
@@ -57,6 +62,11 @@ function Header() {
             <li>
               <Link className="nav__link" href="/founders">
                 Meet the Founders
+              </Link>
+            </li>
+            <li>
+              <Link className="nav__link" href="/plan">
+                Plan
               </Link>
             </li>
           </ul>
