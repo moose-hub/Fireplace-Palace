@@ -91,3 +91,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - review progress and assess stretch goals
   - make new plan for each stretch goal identified
+
+## Stretch Goals
+
+- Remove the useEffect for fetching from the API and replace it with useSWR
+
+  - import SWR
+  - set the path to the API using fetcher
+  - determine what to return from that
+  - ensure the error and laoding statements are added in
+  - check new output against previous output to preserve all functionality
+
+- Try and make the page more real life-like
+  - automatic review loaded depending on your location
+  - fixed size review box so we don't keep changing the size of the page
