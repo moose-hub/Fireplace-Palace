@@ -8,6 +8,8 @@
 .blog__author-wrapper {
   display: flex;
   justify-content: space-between;
+  border: 1px solid rgb(var(--color-light-darker));
+  padding: 1rem;
 }
 
 .post__details-wrapper {
@@ -16,7 +18,7 @@
 }
 
 .blog__post {
-  border: 1px solid black;
+  border: 1px solid rgb(var(--color-light-darker));
   padding: 1rem;
 }
 
