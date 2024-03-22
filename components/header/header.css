@@ -72,9 +72,17 @@ header {
   text-align: right;
 }
 
+.nav__list-mobile>li::after {
+  content: " -";
+}
+
 .nav__link {
   color: rgb(30, 30, 30);
   text-decoration: none;
+}
+
+.nav__link:hover {
+  color: rgb(230, 230, 230);
 }
 
 .nav__button-mobile {
