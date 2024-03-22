@@ -17,8 +17,8 @@ function Header({ text }) {
 
   return (
     <header
-      className={navShown ? "header__nav-open" : false}
-      onClick={(e) => (navShown && e.target.className === "header__nav-open" ? toggleNav() : false)}>
+      className={navShown ? "header__nav-open" : undefined}
+      onClick={(e) => (navShown && e.target.className === "header__nav-open" || e.target.className === "nav__link" ? toggleNav() : undefined)}>
       <Image
         src={Logo}
         placeholder="empty"
