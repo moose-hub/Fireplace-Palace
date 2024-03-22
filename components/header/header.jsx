@@ -40,8 +40,8 @@ function Header() {
               </Link>
             </li>
             <li className="nav__link-primary">
-              <Link className="nav__link" href="/plan">
-                Plan
+              <Link className="nav__link" href="/Blog">
+                Blog
               </Link>
             </li>
           </ul>
@@ -65,8 +65,8 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link className="nav__link" href="/plan">
-                Plan
+              <Link className="nav__link" href="/Blog">
+                Blog
               </Link>
             </li>
           </ul>
