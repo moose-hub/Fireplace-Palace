@@ -7,8 +7,7 @@ import { useState } from "react";
 
 import Logo from "../../assets/logo-small.png";
 
-// eslint-disable-next-line react/prop-types
-function Header({ text }) {
+function Header() {
   const [navShown, setNavShown] = useState(false);
 
   const toggleNav = () => {
