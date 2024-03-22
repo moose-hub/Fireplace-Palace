@@ -9,20 +9,22 @@ const fetcher = (...args) => fetch(...args).then(res => res.json());
 const useReview = (country) => {
   const { data, isError, isLoading } = useSWR(`https://seal-app-336e8.ondigitalocean.app/reviews?country=${country}`, fetcher);
 
-  const defaults = {
-    text: " Choose your country to see the latest review"
-  }
-
   return {
-    review: data || defaults,
+    review: data,
     error: isError,
-    isLoading: data ? isLoading : false
+    isLoading
   }
 }
 
-function content__toggler() {
+const Author = ({ name, location }) => (
+  <>
+    {name} - <span className="review__author-location">{location}</span>
+  </>
+)
 
-  const [currentCountry, setCurrentCountry] = useState(null);
+function Reviews() {
+
+  const [currentCountry, setCurrentCountry] = useState("england");
   const { review, error, isLoading } = useReview(currentCountry);
 
   const handleClick = (ev) => {
@@ -41,17 +43,17 @@ function content__toggler() {
       <div className="review__wrapper">
         <p className="review__text">
           {
-            error ? "Error" :
-              isLoading ? "Loading" :
+            error ? "There was an error fetching the review..." :
+              isLoading ? "Loading..." :
                 review.text
           }
         </p>
-        <div className={currentCountry ? "review__author" : "review__author hide"}>
-          {review.author} - <span className="review__author-location">{review.location}</span>
+        <div className="review__author">
+          {isLoading ? "Loading..." : <Author name={review.author} location={review.location} />}
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
-export default content__toggler;
+export default Reviews;
