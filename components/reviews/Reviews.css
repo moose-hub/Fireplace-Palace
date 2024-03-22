@@ -19,7 +19,7 @@
 
 .content__toggler-buttons {
     display: flex;
-    gap: 1.65rem;
+    gap: 1.25rem;
 }
 
 .content__toggler-button {
@@ -27,8 +27,7 @@
     color: var(--color-light);
     border: none;
     border-radius: 3px;
-    padding: 1rem 2.5rem;
-    max-width: 150px;
+    padding: 1rem 1.5rem;
 
     transition: background-color .125s ease-in-out, color .125s ease-in-out;
 
@@ -49,13 +48,13 @@
     text-align: center;
     gap: 1rem;
     width: 95%;
+    min-height: 200px;
 }
 
 .review__text {
     background-color: rgb(var(--color-light-darker));
     padding: 2rem;
     border-radius: 1rem;
-    height: 100px;
 }
 
 .review__author {
@@ -69,4 +68,10 @@
 .active {
     background-color: var(--accent-color);
     color: var(--color-dark);
+}
+
+@media (orientation: landscape) {
+    .content__toggler-buttons {
+        flex-direction: row;
+    }
 }
