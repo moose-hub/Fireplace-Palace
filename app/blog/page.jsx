@@ -1,3 +1,5 @@
+"use client"
+
 import "./page.css";
 import author from "../../assets/founders/founder-mike-and-mandy.png";
 import dev1 from "../../assets/jhearn.png";
@@ -11,6 +13,19 @@ import nav from "../../assets/blog/nav.jpg";
 import swr from "../../assets/blog/swr.jpg";
 import Image from "next/image";
 import Main from "../../components/main/main";
+
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+function JS({ code, showLineNumbers }) {
+  return (
+    <CodeBlock
+      text={code}
+      language="tsx"
+      showLineNumbers={true}
+      theme={dracula}
+    />
+  );
+}
 
 function Blog() {
   return (
@@ -159,18 +174,73 @@ function Blog() {
           </div>
 
           <div className="david__wrapper">
+            <Image className="floatLeft" src={file_structure} />
             <p>This week, our team had the task of porting the Vite-React project to Next.js. Fireplace Palace wanted new pages and we had to deliver. The first thing involved in this process is pulling over all our React components and assets.</p>
             <p>Next.js's App Router - similar to its predecessor, the Pages Router - routes based on the file structure. Each page is in its own directory, named `page.jsx`, with its corresponding `page.css`. The directory name can be wrapped in square brakcets [ ] to give us dynamic routing capabilities in the future.</p>
-            <Image src={file_structure} />
-            <p>One thing Next.js provides for us is its `Image` component, which lets us optimise at build time, so we opted to replace all our image tags for an easy win.</p>
-            <Image src={image_component} />
+            <p className="clearfix">One thing Next.js provides for us is its `Image` component, which lets us optimise at build time, so we opted to replace all our image tags for an easy win.</p>
+            <JS code={
+              `export function Card({ image, title, desc }) {
+  return (
+      <article className="contact__card">
+          <Image src={image}
+              sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
+              placeholder="empty"
+              alt="How it works 3"
+              className="contact__card-img"
+          />
+          <div className="contact__card-info">
+              <span className="contact__card-title">{title}</span>
+              <p className="contact__card-desc">{desc}</p>
+          </div>
+      </article>
+  )
+}`
+            } />
+            {/* <Image src={image_component} /> */}
             <p>With the plan to add more pages, we would be making use of the Layouts feature of Next.js This lets us have a default wrapper for each page - all the stuff that doesn't change.</p>
-            <Image src={layout} />
+            <JS code={
+              `export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={aleo.className}>
+        <Header text="🔥Fireplace Palace" />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}`
+            } />
+            {/* <Image src={layout} /> */}
             <p>And of course, with the addition of new pages, we'd need a navigation. We set out to make this work on mobile first with a nice nav drawer, and then have it adjust for desktop users.</p>
             <Image src={nav} />
             <p>Okay, so we have routing, a new page, optimised images and a shiny new nav bar. Next was the requirement to add a reviews component for the home page that would fetch from our "backend".
               We started by using the `useEffect` hook to grab our data, but quickly decided on Vercel's own `swc` package that would abstract some of that away for us, while also providing us with error and loading support. We haven't made full use of it from a UX perspective, but we're well placed to add spinners or loading UI now.</p>
-            <Image src={swr} />
+            <JS code={
+              `import useSWR from 'swr';
+
+const useReview = (country) => {
+  const { data, isError, isLoading } = useSWR(\`https://seal-app-336e8.ondigitalocean.app/reviews?country=\${country}\`, fetcher);
+
+  return {
+    review: data,
+    error: isError,
+    isLoading
+  }
+}
+
+const Author = ({ name, location }) => (
+  <>
+    {name} - <span className="review__author-location">{location}</span>
+  </>
+)
+
+function Reviews() {
+
+  const [currentCountry, setCurrentCountry] = useState("england");
+  const { review, error, isLoading } = useReview(currentCountry);`
+            } />
+            {/* <Image src={swr} /> */}
           </div>
           <div className="post__category-title">
             <h2>Reflections:</h2>
