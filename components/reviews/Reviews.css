@@ -45,16 +45,18 @@
 .review__wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     gap: 1rem;
     width: 95%;
-    min-height: 200px;
+    min-height: 190px;
 }
 
 .review__text {
     background-color: rgb(var(--color-light-darker));
     padding: 2rem;
     border-radius: 1rem;
+    min-height: 100px;
 }
 
 .review__author {
