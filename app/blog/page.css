@@ -28,6 +28,7 @@
 
 .post__developers-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -60,4 +61,11 @@
 
 .david__wrapper p {
   margin: 1rem 0;
+}
+
+
+@media (orientation: landscape) {
+  .post__developers-wrapper {
+    flex-direction: row;
+  }
 }
