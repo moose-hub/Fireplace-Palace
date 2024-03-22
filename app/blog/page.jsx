@@ -1,9 +1,14 @@
 import "./page.css";
-import author from "../../assets/SOC Icon.png";
+import author from "../../assets/founders/founder-mike-and-mandy.png";
 import dev1 from "../../assets/jhearn.png";
 import dev2 from "../../assets/jwhite.png";
 import dev3 from "../../assets/dmcdonald.png";
 import gitHist from "../../assets/gitCommitHist.png";
+import file_structure from "../../assets/blog/file_structure.jpg";
+import image_component from "../../assets/blog/image_component.jpg";
+import layout from "../../assets/blog/layout.jpg";
+import nav from "../../assets/blog/nav.jpg";
+import swr from "../../assets/blog/swr.jpg";
 import Image from "next/image";
 import Main from "../../components/main/main";
 
@@ -12,10 +17,10 @@ function Blog() {
     <Main>
       <div className="blog__container">
         <div className="blog__author-wrapper">
-          <Image src={author} />
+          <Image className="blog__author-image" src={author} />
           <div className="post__details-wrapper">
             <span className="blog__post-date">22/03/2024</span>
-            <span className="blog__post-author">John Doe</span>
+            <span className="blog__post-author">Mike and Mandy</span>
           </div>
         </div>
         <h1 className="blog__post-title">Developing Fireplace Palace</h1>
@@ -145,7 +150,7 @@ function Blog() {
           </div>
 
           <div className="git__img-wrapper">
-            <Image src={gitHist} className="git__hist"/>
+            <Image src={gitHist} className="git__hist" />
           </div>
 
 
@@ -154,9 +159,28 @@ function Blog() {
           </div>
 
           <div className="david__wrapper">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus quia accusamus magni, nostrum itaque molestias. Nostrum, qui iste asperiores aspernatur excepturi corporis sapiente possimus laboriosam fugit, cumque quasi, dicta praesentium.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus quia accusamus magni, nostrum itaque molestias. Nostrum, qui iste asperiores aspernatur excepturi corporis sapiente possimus laboriosam fugit, cumque quasi, dicta praesentium.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus quia accusamus magni, nostrum itaque molestias. Nostrum, qui iste asperiores aspernatur excepturi corporis sapiente possimus laboriosam fugit, cumque quasi, dicta praesentium.</p>
+            <p>This week, our team had the task of porting the Vite-React project to Next.js. Fireplace Palace wanted new pages and we had to deliver. The first thing involved in this process is pulling over all our React components and assets.</p>
+            <p>Next.js's App Router - similar to its predecessor, the Pages Router - routes based on the file structure. Each page is in its own directory, named `page.jsx`, with its corresponding `page.css`. The directory name can be wrapped in square brakcets [ ] to give us dynamic routing capabilities in the future.</p>
+            <Image src={file_structure} />
+            <p>One thing Next.js provides for us is its `Image` component, which lets us optimise at build time, so we opted to replace all our image tags for an easy win.</p>
+            <Image src={image_component} />
+            <p>With the plan to add more pages, we would be making use of the Layouts feature of Next.js This lets us have a default wrapper for each page - all the stuff that doesn't change.</p>
+            <Image src={layout} />
+            <p>And of course, with the addition of new pages, we'd need a navigation. We set out to make this work on mobile first with a nice nav drawer, and then have it adjust for desktop users.</p>
+            <Image src={nav} />
+            <p>Okay, so we have routing, a new page, optimised images and a shiny new nav bar. Next was the requirement to add a reviews component for the home page that would fetch from our "backend".
+              We started by using the `useEffect` hook to grab our data, but quickly decided on Vercel's own `swc` package that would abstract some of that away for us, while also providing us with error and loading support. We haven't made full use of it from a UX perspective, but we're well placed to add spinners or loading UI now.</p>
+            <Image src={swr} />
+          </div>
+          <div className="post__category-title">
+            <h2>Reflections:</h2>
+          </div>
+          <div className="david__wrapper">
+            <h3>Teechnical</h3>
+            <p>One thing we might consider for future iterations is mixing in some CSS modules to isolate styles to individual page components. We vaguely adopted the BEM styling methodology, but it may we worth looking into alternatives like CUBE CSS.</p>
+            <p>Designing the skeleton of an individual page with content changes in mind. We'd like to avoid page layout changes for better UX.</p>
+            <h3>Team</h3>
+            <p>In the future, it would be wise to devise a formal workflow, using Github Issues and pull requests. We did work on branches and use pull requests, but not as strictly as we perhaps should have.</p>
           </div>
 
         </article>
