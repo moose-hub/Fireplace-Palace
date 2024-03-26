@@ -10,11 +10,18 @@ export const metadata = {
   description: 'The fireplace palace website',
 };
 
+const navLinks = [
+	{ name: "Home", location: "/" },
+	{ name: "Meet the Founders", location: "/founders" },
+	{ name: "Book a Design Consultation", location: "/booking" },
+	{ name: "Blog", location: "/blog" },
+];
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={aleo.className}>
-        <Header text="🔥Fireplace Palace" />
+        <Header links={navLinks} text="🔥Fireplace Palace" />
         {children}
         <Footer />
       </body>
