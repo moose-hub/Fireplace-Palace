@@ -45,4 +45,12 @@ input:invalid {
   border: 1px solid red;
 }
 
+.booking__banner {
+  background-color: var(--accent-color);
+  font-size: 2.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  width: 100%;
+}
+
 @media screen and (orientation: landscape) {}
