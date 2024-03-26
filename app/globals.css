@@ -23,6 +23,8 @@ body {
   background-color: var(--color-light);
   color: var(--color-dark);
   line-height: 1.2;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 header,
@@ -38,9 +40,10 @@ a:active {
   color: var(--color-dark);
 }
 
-input {
+input, button {
   outline: none;
-  padding: 0 .25rem;
+  padding: .5rem;
+  border: none;
 }
 
 input:focus {
