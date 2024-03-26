@@ -167,10 +167,10 @@ function Blog() {
             <p>With the plan to add more pages, we would be making use of the Layouts feature of Next.js This lets us have a default wrapper for each page - all the stuff that doesn't change.</p>
             <Image src={layout} />
             <p>And of course, with the addition of new pages, we'd need a navigation. We set out to make this work on mobile first with a nice nav drawer, and then have it adjust for desktop users.</p>
-            <Image src={nav} />
+            <Image src={nav} width="800" />
             <p>Okay, so we have routing, a new page, optimised images and a shiny new nav bar. Next was the requirement to add a reviews component for the home page that would fetch from our "backend".
               We started by using the `useEffect` hook to grab our data, but quickly decided on Vercel's own `swc` package that would abstract some of that away for us, while also providing us with error and loading support. We haven't made full use of it from a UX perspective, but we're well placed to add spinners or loading UI now.</p>
-            <Image src={swr} />
+            <Image src={swr} width="900" />
           </div>
           <div className="post__category-title">
             <h2>Reflections:</h2>

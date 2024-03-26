@@ -37,3 +37,12 @@ a:visited,
 a:active {
   color: var(--color-dark);
 }
+
+input {
+  outline: none;
+  padding: 0 .25rem;
+}
+
+input:focus {
+  border-bottom: 1px solid var(--accent-color);
+}
