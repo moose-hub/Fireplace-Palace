@@ -1,0 +1,40 @@
+.booking__form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.booking__form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgb(229, 229, 229);
+  margin-bottom: 2rem;
+}
+
+.booking__form-input {
+  height: 2rem;
+  margin: 0.3rem 0 1rem 0;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0px 2px black;
+}
+
+.booking__form-submit {
+  padding: 1rem;
+  border: none;
+  box-shadow: 1px 1px 5px maroon;
+  border-radius: 5px;
+  background-color: var(--accent-color);
+  color: var(--color-light);
+  text-shadow: 0 1px 2px maroon;
+  font-size: 1.3rem;
+  width: 80%;
+  max-width: 600px;
+  align-self: center;
+}
+
+@media screen and (orientation: landscape) {}
