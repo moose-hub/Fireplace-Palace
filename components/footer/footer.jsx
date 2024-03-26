@@ -8,7 +8,7 @@ function Footer() {
             <h4>Find us on:</h4>
             <Socials />
             <small id="copyright">©Fireplace Palace</small>
-            <a href="mailto:example@example.com" id="email">info@fireplace.co.uk</a>
+            <a href="mailto:example@example.com" className="footer__email">info@fireplace.co.uk</a>
         </div>
     </footer>
   );

@@ -30,6 +30,6 @@ footer {
   color: #5a4e4e;
 }
 
-#email {
+.footer__email {
   text-align: right;
 }

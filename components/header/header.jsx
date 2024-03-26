@@ -35,8 +35,8 @@ function Header({ links }) {
       <div className="nav__wrapper">
         <nav className="nav__wrapper-primary" aria-label="Primary navigation">
           <ul className="nav__list-primary">
-            {links.map((link) => (
-              <li className="nav__link-primary">
+            {links.map((link, index) => (
+              <li className="nav__link-primary" key={index}>
                 <Link className="nav__link" href={link.location}>
                   {link.name}
                 </Link>
@@ -68,8 +68,8 @@ function Header({ links }) {
             />
           </button>
           <ul className="nav__list-mobile">
-            {links.map((link) => (
-              <li className="nav__link">
+            {links.map((link, index) => (
+              <li className="nav__link" key={index}>
                 <Link className="nav__link" href={link.location}>
                   {link.name}
                 </Link>
