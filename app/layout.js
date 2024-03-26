@@ -11,10 +11,10 @@ export const metadata = {
 };
 
 const navLinks = [
-	{ name: "Home", location: "/" },
-	{ name: "Meet the Founders", location: "/founders" },
-	{ name: "Book a Design Consultation", location: "/booking" },
-	{ name: "Blog", location: "/blog" },
+  { name: "Home", location: "/" },
+  { name: "Meet the Founders", location: "/founders" },
+  { name: "Book a Design Consultation", location: "/booking" },
+  { name: "Blog", location: "/blog" },
 ];
 
 export default function RootLayout({ children }) {
