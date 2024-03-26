@@ -1,9 +1,10 @@
 import "./HeroDesc.css"
+import Link from "next/link"
 
 export function HeroDesc() {
     return(     
          <div className="hero__banner-desc">
              <h1 className="banner__desc-title">Discover the Perfect Fireplace ...</h1>
-             <p className="banner__desc-info">Book consultation: <span>0121 345 6789</span></p>
+             <Link className="banner__booking-link" href="/booking">Book consultation</Link>
          </div>
  )}
