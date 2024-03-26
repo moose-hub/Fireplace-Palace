@@ -104,3 +104,23 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - Try and make the page more real life-like
   - automatic review loaded depending on your location
   - fixed size review box so we don't keep changing the size of the page
+
+
+## Booking Page Plan
+
+Users should see a link on the home page saying "Book Consultation", they should not see the phone number anymore.
+Users should be able to click the link and go to a "Design Booking" page ("/booking")
+When a user reaches the "Design Booking" page they should see a simple form that matches the designs you've been given.
+When a user submits the form it should validate that no fields are empty. 
+If there is an empty form field show an error.
+If there is no error then console log the form data 🙂 (don't worry about posting the data anywhere).
+
+# Form
+
+Write all of the form in one "ContactForm" component.
+Get it looking how it should first (JSX and CSS).
+Then try to create state for a field (or be more ambitious and try making state that is an object - manage all fields)
+Connect onChange events on the form fields to handlers (or a handler) that updates state.
+Make sure the state is tied back to the form fields (values attribute)
+Handle the onSubmit of the form (don't forget about preventing the default behaviour). 
+Once you it's all connected think about validation. You are already capturing the the onSubmit - maybe do something there 🙂.
