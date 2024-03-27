@@ -1,37 +1,64 @@
 "use client";
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import "./page.css";
 
+// REDUCER
+
+const FORM_ACTIONS = {
+  UPDATE: "FORM_UPDATE",
+  SUBMIT: "FORM_SUBMIT",
+};
+
+const initial = {
+  fname: "",
+  lname: "",
+  postcode: "",
+  address: "",
+  phone: "",
+  email: "",
+  validation: {
+    message: "",
+  },
+};
+
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case FORM_ACTIONS.UPDATE:
+      return { ...state, ...action.payload };
+    case FORM_ACTIONS.SUBMIT: {
+      const hasEmptyField = Object.values(state).some((value) => value === "");
+      if (hasEmptyField) {
+        return { ...state, validation: action.payload };
+      }
+      // Success
+      console.log(state);
+      return initial;
+    }
+    default:
+      return state;
+  }
+};
+
+// COMPONENT
+
 function Booking() {
-  const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
-    postcode: "",
-    address: "",
-    phone: "",
-    email: "",
-  });
+  const [state, dispatch] = useReducer(formReducer, initial);
 
   function handleChange(e) {
-    const { id, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
+    dispatch({
+      type: FORM_ACTIONS.UPDATE,
+      payload: { [e.target.id]: e.target.value },
+    });
   }
-
-  const [validationMessage, setValidationMessage] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    const isEmptyField = Object.values(formData).some((value) => value === "");
-    if (isEmptyField) {
-      setValidationMessage("Please fill in all fields");
-    } else {
-      setValidationMessage("");
-
-      console.log(`Form data: ${JSON.stringify(formData)}`);
-    }
+    dispatch({
+      type: FORM_ACTIONS.SUBMIT,
+      payload: {
+        message: "Please fill in all fields",
+      },
+    });
   }
   return (
     <main className="booking__content">
@@ -43,7 +70,9 @@ function Booking() {
         onSubmit={handleSubmit}
       >
         <ul className="booking__form-list">
-          <h2 className="booking__form-heading">So we know where our fireplace will be going</h2>
+          <h2 className="booking__form-heading">
+            So we know where our fireplace will be going
+          </h2>
           <div className="input__container">
             <input
               id="fname"
@@ -100,7 +129,9 @@ function Booking() {
               Address
             </label>
           </div>
-          <h2 className="booking__form-heading">So we know how to contact you</h2>
+          <h2 className="booking__form-heading">
+            So we know how to contact you
+          </h2>
           <div className="input__container">
             <input
               id="phone"
@@ -131,7 +162,9 @@ function Booking() {
             Book Consultation
           </button>
         </ul>
-        <div className="booking__form-validation">{validationMessage}</div>
+        <div className="booking__form-validation">
+          {state.validation.message}
+        </div>
       </form>
     </main>
   );
