@@ -94,6 +94,7 @@ const FORM_ACTIONS = {
   SUBMISSION_VALIDATE: "FORM_SUBMISSION_VALIDATE",
   SUBMITTING: "FORM_SUBMITTING",
   SUBMITTED: "FORM_SUBMITTED",
+  SUBMISSION_ERROR: "FORM_SUBMISSION_ERROR",
 };
 
 const initial = {
@@ -122,11 +123,9 @@ const formReducer = (state, action) => {
         },
       });
 
-      const result = { ...state, fields };
-      return result;
+      return { ...state, fields };
     }
     case FORM_ACTIONS.SUBMISSION_VALIDATE: {
-      console.log(state.fields);
       for (const field in state.fields) {
         if (!state.fields[field].valid) {
           const form = {
@@ -137,7 +136,6 @@ const formReducer = (state, action) => {
           return { ...state, form };
         }
       }
-      console.log("FORM IS VALID");
       const form = {
         valid: true,
         isSubmitting: false,
@@ -177,6 +175,7 @@ function Booking() {
       type: FORM_ACTIONS.UPDATE,
       payload: { field: e.target.id, value: e.target.value },
     });
+
     dispatch({
       type: FORM_ACTIONS.SUBMISSION_VALIDATE,
     });
@@ -184,6 +183,16 @@ function Booking() {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
+
+    const inputs = e.target.querySelectorAll(".booking__form-input");
+
+    // TODO: Maybe think about having a `touched` property in fields state?
+    for (const input of inputs) {
+      dispatch({
+        type: FORM_ACTIONS.UPDATE,
+        payload: { field: input.id, value: input.value },
+      });
+    }
 
     dispatch({
       type: FORM_ACTIONS.SUBMISSION_VALIDATE,
