@@ -29,7 +29,7 @@ const fieldToString = (field) => {
 };
 
 const validators = {
-  fname(value) {
+  async fname(value) {
     if (value.length > 20) {
       return {
         valid: false,
@@ -40,7 +40,7 @@ const validators = {
       valid: true,
     };
   },
-  lname(value) {
+  async lname(value) {
     if (value.length > 20) {
       return {
         valid: false,
@@ -51,18 +51,27 @@ const validators = {
       valid: true,
     };
   },
-  postcode(value) {
-    // TODO: async validation for postcodes
+  async postcode(value) {
+    const response = await fetch(
+      `https://api.postcodes.io/postcodes/${value}/validate`,
+    );
+    const { status, result } = await response.json();
+    if (result === false) {
+      return {
+        valid: false,
+        message: "The post code must be valid",
+      };
+    }
     return {
       valid: true,
     };
   },
-  address(value) {
+  async address(value) {
     return {
       valid: true,
     };
   },
-  phone(value) {
+  async phone(value) {
     const numWithoutSpaces = value.split(" ").join("");
     if (numWithoutSpaces.length < 11) {
       return {
@@ -80,7 +89,7 @@ const validators = {
       valid: true,
     };
   },
-  email(value) {
+  async email(value) {
     if (!/\w+\@[a-zA-Z|\d]+\.\w+/.test(value)) {
       return {
         valid: false,
@@ -99,10 +108,10 @@ function validate(field, input) {
 
   // Can't be blank
   if (value === "") {
-    return {
+    return Promise.resolve({
       valid: false,
       message: `The ${fieldToString(field)} cannot be blank`,
-    };
+    });
   }
 
   // Then pass it to individual validation
@@ -131,11 +140,29 @@ const initial = {
   form: { valid: true, isSubmitting: false, hasSubmitted: false },
 };
 
+function dispatchMiddleware(dispatch) {
+  return (action) => {
+    switch (action.type) {
+      case FORM_ACTIONS.UPDATE: {
+        const { field, value } = action.payload;
+        validate(field, value).then(({ valid, message }) => {
+          dispatch({
+            type: action.type,
+            payload: { ...action.payload, valid, message },
+          });
+        });
+        break;
+      }
+      default:
+        return dispatch(action);
+    }
+  };
+}
+
 const formReducer = (state, action) => {
   switch (action.type) {
     case FORM_ACTIONS.UPDATE: {
-      const { field, value } = action.payload;
-      const { valid, message } = validate(field, value);
+      const { field, value, valid, message } = action.payload;
 
       const fields = Object.assign(state.fields, {
         [field]: {
@@ -190,10 +217,11 @@ const formReducer = (state, action) => {
 // COMPONENT
 
 function Booking() {
-  const [state, dispatch] = useReducer(formReducer, initial);
+  const [state, rootDispatch] = useReducer(formReducer, initial);
+  const dispatch = dispatchMiddleware(rootDispatch);
 
-  const handleChange = useCallback((e) => {
-    dispatch({
+  const handleChange = useCallback(async (e) => {
+    await dispatch({
       type: FORM_ACTIONS.UPDATE,
       payload: { field: e.target.id, value: e.target.value },
     });
