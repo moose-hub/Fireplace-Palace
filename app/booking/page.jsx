@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useReducer } from "react";
+import React, { useCallback, useEffect, useReducer } from "react";
 import "./page.css";
 
 const postForm = (url, body) =>
@@ -11,13 +11,47 @@ const postForm = (url, body) =>
     }, 1000);
   });
 
+const validators = {
+  async fname(value) {
+    return {
+      valid: false,
+      message: "Invalid",
+    };
+  },
+  async lname(value) {
+    return {
+      valid: false,
+      message: "Invalid",
+    };
+  },
+  async postcode(value) {
+    return {
+      valid: false,
+      message: "Invalid",
+    };
+  },
+  async address(value) {
+    return {
+      valid: false,
+      message: "Invalid",
+    };
+  },
+  async phone(value) {
+    return {
+      valid: false,
+      message: "Invalid",
+    };
+  },
+  async email(value) {
+    return {
+      valid: false,
+      message: "Invalid",
+    };
+  },
+};
+
 function validate(field, value) {
-  console.log("field:", field);
-  console.log("value:", value);
-  return {
-    valid: false,
-    message: "Invalid",
-  };
+  return validators[field](value);
 }
 
 // REDUCER
@@ -38,48 +72,58 @@ const initial = {
     phone: { value: "", valid: false, validationMessage: "" },
     email: { value: "", valid: false, validationMessage: "" },
   },
-  form: { valid: false, isSubmitting: false, hasSubmitted: false },
+  form: { valid: true, isSubmitting: false, hasSubmitted: false },
 };
 
 const formReducer = (state, action) => {
   switch (action.type) {
     case FORM_ACTIONS.UPDATE: {
-      console.log("ACTION.UPDATE");
       const { valid, message } = validate(
         action.payload.field,
         action.payload.value,
       );
 
-      console.log(valid);
-      console.log(message);
-
-      return Object.assign(state, {
+      const fields = Object.assign(state.fields, {
         [action.payload.field]: {
           value: action.payload.value,
           valid,
           validationMessage: message,
         },
       });
+
+      const result = { ...state, fields };
+      return result;
     }
     case FORM_ACTIONS.SUBMISSION_VALIDATE: {
-      console.log("ACTION.SUBMISSION_VALIDATE");
       for (const field in state.fields) {
         if (!field.valid) {
-          return Object.assign(state, { form: { valid: false } });
+          const form = {
+            valid: false,
+            isSubmitting: false,
+            hasSubmitted: false,
+          };
+          return { ...state, form };
         }
       }
       return state;
     }
-    case FORM_ACTIONS.SUBMITTING:
-      console.log("ACTION.SUBMITTING");
-      return Object.assign(state, { form: { isSubmitting: true } });
-    case FORM_ACTIONS.SUBMITTED:
-      console.log("ACTION.SUBMITTED");
-      console.table(state);
-      return Object.assign(initial, { form: { hasSubmitted: true } });
-    case FORM_ACTIONS.SUBMISSION_ERROR:
-      console.log("ACTION.SUBMISSION_ERROR");
+    case FORM_ACTIONS.SUBMITTING: {
+      const form = Object.assign(state.form, {
+        isSubmitting: true,
+        hasSubmitted: false,
+      });
+      return { ...state, form };
+    }
+    case FORM_ACTIONS.SUBMITTED: {
+      const form = Object.assign(state.form, {
+        isSubmitting: false,
+        hasSubmitted: true,
+      });
+      return { ...initial, form };
+    }
+    case FORM_ACTIONS.SUBMISSION_ERROR: {
       return state;
+    }
     default:
       return state;
   }
@@ -94,6 +138,9 @@ function Booking() {
     dispatch({
       type: FORM_ACTIONS.UPDATE,
       payload: { field: e.target.id, value: e.target.value },
+    });
+    dispatch({
+      type: FORM_ACTIONS.SUBMISSION_VALIDATE,
     });
   });
 
@@ -272,11 +319,15 @@ function Booking() {
               {state.fields.email.validationMessage}
             </span>
           </div>
-          <div className="booking__form-validation">
-            {state.form.validationMessage}
-          </div>
+          {/* <div
+            className={`booking__form-validation ${
+              state.form.valid ? "hidden" : ""
+            }`}
+          >
+            There were some errors in the inputs. Please check!
+          </div> */}
           <button type="submit" className="booking__form-submit">
-            Book Consultation
+            {state.form.valid ? "Book Consultation" : "Please fix the errors"}
           </button>
         </ul>
       </form>
