@@ -105,12 +105,23 @@
   transition: height .125s ease-in-out;
 }
 
-.booking__form-error {
+.booking__input-error {
   display: block;
   margin: 5px 0 -5px 5px;
   color: #f01b1b;
   transition: opacity .125s ease-in-out;
   height: 1lh;
+}
+
+.booking__form-error {
+  background-color: #bbb;
+  color: rgb(184, 28, 28);
+}
+
+.booking__form-error:hover {
+  background-color: #bbb;
+  box-shadow: initial;
+  cursor: not-allowed;
 }
 
 @media screen and (min-width: 800px) {

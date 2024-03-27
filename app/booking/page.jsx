@@ -12,45 +12,78 @@ const postForm = (url, body) =>
   });
 
 const validators = {
-  async fname(value) {
+  fname(value) {
+    if (value === "") {
+      return {
+        valid: false,
+        message: "The first name cannot be blank",
+      };
+    }
+
     return {
-      valid: false,
-      message: "Invalid",
+      valid: true,
     };
   },
-  async lname(value) {
+  lname(value) {
+    if (value === "") {
+      return {
+        valid: false,
+        message: "The last name cannot be blank",
+      };
+    }
     return {
-      valid: false,
-      message: "Invalid",
+      valid: true,
     };
   },
-  async postcode(value) {
+  postcode(value) {
+    if (value === "") {
+      return {
+        valid: false,
+        message: "The post code cannot be blank",
+      };
+    }
     return {
-      valid: false,
-      message: "Invalid",
+      valid: true,
     };
   },
-  async address(value) {
+  address(value) {
+    if (value === "") {
+      return {
+        valid: false,
+        message: "The address cannot be blank",
+      };
+    }
     return {
-      valid: false,
-      message: "Invalid",
+      valid: true,
     };
   },
-  async phone(value) {
+  phone(value) {
+    if (value === "") {
+      return {
+        valid: false,
+        message: "The phone cannot be blank",
+      };
+    }
     return {
-      valid: false,
-      message: "Invalid",
+      valid: true,
     };
   },
-  async email(value) {
+  email(value) {
+    if (value === "") {
+      return {
+        valid: false,
+        message: "The email cannot be blank",
+      };
+    }
     return {
-      valid: false,
-      message: "Invalid",
+      valid: true,
     };
   },
 };
 
 function validate(field, value) {
+  // Universal validation (eg. not empty)
+  // Then pass it to individual validation
   return validators[field](value);
 }
 
@@ -65,12 +98,12 @@ const FORM_ACTIONS = {
 
 const initial = {
   fields: {
-    fname: { value: "", valid: false, validationMessage: "" },
-    lname: { value: "", valid: false, validationMessage: "" },
-    postcode: { value: "", valid: false, validationMessage: "" },
-    address: { value: "", valid: false, validationMessage: "" },
-    phone: { value: "", valid: false, validationMessage: "" },
-    email: { value: "", valid: false, validationMessage: "" },
+    fname: { value: "", valid: true, validationMessage: "" },
+    lname: { value: "", valid: true, validationMessage: "" },
+    postcode: { value: "", valid: true, validationMessage: "" },
+    address: { value: "", valid: true, validationMessage: "" },
+    phone: { value: "", valid: true, validationMessage: "" },
+    email: { value: "", valid: true, validationMessage: "" },
   },
   form: { valid: true, isSubmitting: false, hasSubmitted: false },
 };
@@ -78,14 +111,12 @@ const initial = {
 const formReducer = (state, action) => {
   switch (action.type) {
     case FORM_ACTIONS.UPDATE: {
-      const { valid, message } = validate(
-        action.payload.field,
-        action.payload.value,
-      );
+      const { field, value } = action.payload;
+      const { valid, message } = validate(field, value);
 
       const fields = Object.assign(state.fields, {
-        [action.payload.field]: {
-          value: action.payload.value,
+        [field]: {
+          value,
           valid,
           validationMessage: message,
         },
@@ -95,8 +126,9 @@ const formReducer = (state, action) => {
       return result;
     }
     case FORM_ACTIONS.SUBMISSION_VALIDATE: {
+      console.log(state.fields);
       for (const field in state.fields) {
-        if (!field.valid) {
+        if (!state.fields[field].valid) {
           const form = {
             valid: false,
             isSubmitting: false,
@@ -105,7 +137,13 @@ const formReducer = (state, action) => {
           return { ...state, form };
         }
       }
-      return state;
+      console.log("FORM IS VALID");
+      const form = {
+        valid: true,
+        isSubmitting: false,
+        hasSubmitted: false,
+      };
+      return { ...state, form };
     }
     case FORM_ACTIONS.SUBMITTING: {
       const form = Object.assign(state.form, {
@@ -206,7 +244,7 @@ function Booking() {
               First Name
             </label>
             <span
-              className={`booking__form-error ${
+              className={`booking__input-error ${
                 state.fields.fname.valid ? "hidden" : ""
               }`}
             >
@@ -227,7 +265,7 @@ function Booking() {
               Last Name
             </label>
             <span
-              className={`booking__form-error ${
+              className={`booking__input-error ${
                 state.fields.lname.valid ? "hidden" : ""
               }`}
             >
@@ -248,7 +286,7 @@ function Booking() {
               Postcode
             </label>
             <span
-              className={`booking__form-error ${
+              className={`booking__input-error ${
                 state.fields.postcode.valid ? "hidden" : ""
               }`}
             >
@@ -269,7 +307,7 @@ function Booking() {
               Address
             </label>
             <span
-              className={`booking__form-error ${
+              className={`booking__input-error ${
                 state.fields.address.valid ? "hidden" : ""
               }`}
             >
@@ -292,7 +330,7 @@ function Booking() {
               Phone Number
             </label>
             <span
-              className={`booking__form-error ${
+              className={`booking__input-error ${
                 state.fields.phone.valid ? "hidden" : ""
               }`}
             >
@@ -312,7 +350,7 @@ function Booking() {
               Email
             </label>
             <span
-              className={`booking__form-error ${
+              className={`booking__input-error ${
                 state.fields.email.valid ? "hidden" : ""
               }`}
             >
@@ -326,7 +364,13 @@ function Booking() {
           >
             There were some errors in the inputs. Please check!
           </div> */}
-          <button type="submit" className="booking__form-submit">
+          <button
+            disabled={!state.form.valid}
+            type="submit"
+            className={`booking__form-submit ${
+              state.form.valid ? "" : "booking__form-error"
+            }`}
+          >
             {state.form.valid ? "Book Consultation" : "Please fix the errors"}
           </button>
         </ul>
