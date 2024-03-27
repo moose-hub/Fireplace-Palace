@@ -20,6 +20,7 @@ const fieldToString = (field) => {
     case "postcode":
       return "Postcode";
     case "address":
+    
       return "Address";
     case "phone":
       return "Phone number";
@@ -276,13 +277,14 @@ function Booking() {
   return (
     <main className="booking__content">
       <section className="booking__banner">Design Booking</section>
-      <form
+      { !state.form.hasSubmitted ? (
+        <form
         className="booking__form"
         action="api/booking"
         method="post"
         onSubmit={handleSubmit}
       >
-        <ul className="booking__form-list">
+        <ul className="booking__form-container">
           <h2 className="booking__form-heading">
             So we know where our fireplace will be going
           </h2>
@@ -434,6 +436,11 @@ function Booking() {
           </button>
         </ul>
       </form>
+      ) : (
+        <div className="booking__form-container">
+          <h2 className="booking__form-message">Consultation booked!</h2>
+        </div>
+      )}
     </main>
   );
 }
