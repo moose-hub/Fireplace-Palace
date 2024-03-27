@@ -11,24 +11,40 @@ const postForm = (url, body) =>
     }, 1000);
   });
 
+const fieldToString = (field) => {
+  switch (field) {
+    case "fname":
+      return "First Name";
+    case "lname":
+      return "Last Name";
+    case "postcode":
+      return "Postcode";
+    case "address":
+      return "Address";
+    case "phone":
+      return "Phone number";
+    case "email":
+      return "email";
+  }
+};
+
 const validators = {
   fname(value) {
-    if (value === "") {
+    if (value.length > 20) {
       return {
         valid: false,
-        message: "The first name cannot be blank",
+        message: "The first name can't be over 20 characters long",
       };
     }
-
     return {
       valid: true,
     };
   },
   lname(value) {
-    if (value === "") {
+    if (value.length > 20) {
       return {
         valid: false,
-        message: "The last name cannot be blank",
+        message: "The last name can't be over 20 characters long",
       };
     }
     return {
@@ -36,32 +52,28 @@ const validators = {
     };
   },
   postcode(value) {
-    if (value === "") {
-      return {
-        valid: false,
-        message: "The post code cannot be blank",
-      };
-    }
+    // TODO: async validation for postcodes
     return {
       valid: true,
     };
   },
   address(value) {
-    if (value === "") {
-      return {
-        valid: false,
-        message: "The address cannot be blank",
-      };
-    }
     return {
       valid: true,
     };
   },
   phone(value) {
-    if (value === "") {
+    const numWithoutSpaces = value.split(" ").join("");
+    if (numWithoutSpaces.length < 11) {
       return {
         valid: false,
-        message: "The phone cannot be blank",
+        message: "The phone number must be at least 11 digits long",
+      };
+    }
+    if (!/\d+/.test(numWithoutSpaces)) {
+      return {
+        valid: false,
+        message: "The phone number must contain only digits",
       };
     }
     return {
@@ -69,10 +81,10 @@ const validators = {
     };
   },
   email(value) {
-    if (value === "") {
+    if (!/\w+\@[a-zA-Z|\d]+\.\w+/.test(value)) {
       return {
         valid: false,
-        message: "The email cannot be blank",
+        message: "Please input an valid email address",
       };
     }
     return {
@@ -81,8 +93,18 @@ const validators = {
   },
 };
 
-function validate(field, value) {
+function validate(field, input) {
+  const value = input.trim();
   // Universal validation (eg. not empty)
+
+  // Can't be blank
+  if (value === "") {
+    return {
+      valid: false,
+      message: `The ${fieldToString(field)} cannot be blank`,
+    };
+  }
+
   // Then pass it to individual validation
   return validators[field](value);
 }
