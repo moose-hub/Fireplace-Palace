@@ -1,4 +1,4 @@
-<a href="https://fireplace-palace-woad.vercel.app/"><img height="300" src="./assets/FireplacePalaceBanner.png"></a>
+<a href="https://fireplace-palace-woad.vercel.app/"><img src="./assets/FireplacePalaceBanner.png"></a>
 <small>*Click the banner to checkout our app*</small>
 
 ## Authors
