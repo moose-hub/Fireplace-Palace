@@ -8,12 +8,12 @@
 
 ## 📋 Contents
 
-- <a href="#Client_Brief" style="color: #8962ed; text-decoration: underline;">Client Brief</a>
-- <a href="#Solution" style="color: #8962ed; text-decoration: underline;">Solution</a>
-- <a href="#Future_Scope" style="color: #8962ed; text-decoration: underline;">Future Scope</a>
-- <a href="#Dependencies_/_Limitations" style="color: #8962ed; text-decoration: underline;">Dependencies / Limitations</a>
-- <a href="#Tech_Stack" style="color: #8962ed; text-decoration: underline;">Tech Stack</a>
-- <a href="#Lessons_Learned" style="color: #8962ed; text-decoration: underline;">Lessons Learned</a>
+- <a href="#-client-brief" style="color: #8962ed; text-decoration: underline;">Client Brief</a>
+- <a href="#-solution" style="color: #8962ed; text-decoration: underline;">Solution</a>
+- <a href="#-future-scope" style="color: #8962ed; text-decoration: underline;">Future Scope</a>
+- <a href="#-dependencies-/-limitations" style="color: #8962ed; text-decoration: underline;">Dependencies / Limitations</a>
+- <a href="#-tech-Stack" style="color: #8962ed; text-decoration: underline;">Tech Stack</a>
+- <a href="#-lessons-learned" style="color: #8962ed; text-decoration: underline;">Lessons Learned</a>
 
 ## ⛔ Client Brief
 Our clients "Mike" and "Mandy" came to us with a brief. They wanted a landing page website that would help generate new leads for them in order to find clients who want fireplaces. The initial brief was just a basic outline of a home page with a potential for a consultation booking form. Next, this brief was refined into a website with multiplate pages; Home and About Us. Finally, we were asked to implement a consultation form to help Mike and Mandy collect information for their new leads.
